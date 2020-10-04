@@ -1,0 +1,21 @@
+---
+
+- name: "ensure basic packages are installed"
+  package: name={{ item }} state=installed
+  with_items:
+      - ntp
+
+- name: "copy ntp.conf"
+  template:
+    src=ntp.conf_rhat.j2
+    dest=/etc/ntp.conf
+  notify:
+    - restart ntpd
+
+- name: "copy step-tickers"
+  template:
+    src=step-tickers.j2
+    dest=/etc/ntp/step-tickers
+
+- name: "check ntpdate is disabled and stopped"
+  service: name=ntpdate enabled=no state=stopped

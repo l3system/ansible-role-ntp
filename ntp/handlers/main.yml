@@ -1,0 +1,9 @@
+---
+- name: restart ntp
+  service: name=ntp state=restarted enabled=yes
+
+- name: restart ntpd
+  service: name=ntpd state=restarted enabled=yes
+
+- name: restart chronyd
+  service: name=chronyd state=restarted enabled=yes

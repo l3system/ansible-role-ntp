@@ -1,0 +1,21 @@
+server {{ chrony_server }} iburst
+
+bindaddress 127.0.0.1
+
+allow all
+
+# Ignore stratum in source selection.
+stratumweight 0
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+# Enable kernel RTC synchronization.
+rtcsync
+
+# In first three updates step the system clock instead of slew
+# if the adjustment is larger than 10 seconds.
+makestep 10 3
+
+# Send a message to syslog if a clock adjustment is larger than 0.5 seconds.
+logchange 0.5

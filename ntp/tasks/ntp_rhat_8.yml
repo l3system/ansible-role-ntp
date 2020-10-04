@@ -1,0 +1,13 @@
+---
+
+- name: "ensure basic packages are installed"
+  package: name={{ item }} state=installed
+  with_items:
+      - chrony
+
+- name: "copy chrony.conf"
+  template:
+    src=chrony.conf.j2
+    dest=/etc/chrony.conf
+  notify:
+    - restart chronyd

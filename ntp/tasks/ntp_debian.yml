@@ -1,0 +1,16 @@
+---
+
+- name: "ensure basic packages are installed"
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+      - ntp
+
+- name: "copy ntp.conf"
+  template:
+    src=ntp.conf_debian.j2
+    dest=/etc/ntp.conf
+  notify:
+    - restart ntp
+
+- name: "copy /etc/default/ntp"
+  action: copy src=default.ntp.debian dest=/etc/default/ntp

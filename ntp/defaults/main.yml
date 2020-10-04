@@ -1,0 +1,3 @@
+---
+ntp_server: 1.2.3.4
+chrony_server: 1.2.3.4
