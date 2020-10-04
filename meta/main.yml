@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: ntp
   author: your name
   description: your role description
   company: your company (optional)
