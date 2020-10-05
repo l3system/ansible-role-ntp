@@ -3,7 +3,7 @@
 - name: "ensure basic packages are installed"
   apt: pkg={{ item }} state=present update_cache=yes
   with_items:
-      - ntp
+    - ntp
 
 - name: "copy ntp.conf"
   template:

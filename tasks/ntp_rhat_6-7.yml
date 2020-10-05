@@ -1,9 +1,8 @@
 ---
-
 - name: "ensure basic packages are installed"
   package: name={{ item }} state=installed
   with_items:
-      - ntp
+    - ntp
 
 - name: "copy ntp.conf"
   template:
